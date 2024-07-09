@@ -2,9 +2,9 @@
     "repo": "git@github.com:WebArtWork/waw-discount.git",
     "name": "Discount",
     "crud": {
-        "unique": [ "url" ],
+        "unique": [ "code" ],
         "update": {
-            "keys": ["name", "description", "data"]
+            "keys": ["name", "amount", "stores"]
         },
         "delete": [""]
     },
