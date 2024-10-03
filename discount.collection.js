@@ -9,8 +9,17 @@ module.exports = async function (waw) {
 			type: waw.mongoose.Schema.Types.ObjectId,
 			ref: "User"
 		},
-		code:  { type: String, sparse: true, trim: true, unique: true },
-		amount: Number
+		code: { type: String, sparse: true, trim: true, unique: true },
+		amount: Number,
+		discountType: {
+			type: String,
+			enum: ['coupon', 'productDiscount'],
+			default: 'coupon'
+		},
+		products: [{
+			type: waw.mongoose.Schema.Types.ObjectId,
+			ref: "Product"
+		}]
 	});
 
 	Schema.methods.create = function (obj, user) {
@@ -18,7 +27,9 @@ module.exports = async function (waw) {
 		this.stores = obj.stores;
 		this.name = obj.name;
 		this.amount = Number(obj.amount);
-		
+		this.discountType = obj.discountType; // Assign discount type
+		this.products = obj.products;
 	};
+
 	return (waw.Discount = waw.mongoose.model("Discount", Schema));
 };
