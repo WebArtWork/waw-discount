@@ -27,7 +27,7 @@ module.exports = async function (waw) {
 		this.stores = obj.stores;
 		this.name = obj.name;
 		this.amount = Number(obj.amount);
-		this.discountType = obj.discountType; // Assign discount type
+		this.discountType = obj.discountType;
 		this.products = obj.products;
 	};
 
